@@ -1,0 +1,81 @@
+{
+  "name": "@dash-ui/stylis",
+  "version": "1.0.0",
+  "homepage": "https://github.com/dash-ui/stylis#readme",
+  "repository": "github:dash-ui/stylis",
+  "bugs": "https://github.com/dash-ui/stylis/issues",
+  "license": "MIT",
+  "description": "A fork of @emotion/stylis that makes it even smaller, still",
+  "keywords": [
+    "stylis"
+  ],
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "source": "src/index.ts",
+  "types": "types/index.d.ts",
+  "files": [
+    "/dist",
+    "/src",
+    "/types"
+  ],
+  "exports": {
+    ".": {
+      "browser": "./dist/module/index.js",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/main/index.js",
+      "source": "./src/index.ts",
+      "types": "./types/index.d.ts",
+      "default": "./dist/main/index.js"
+    },
+    "./package.json": "./package.json",
+    "./": "./"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "npm run build-esm && npm run build-main && npm run build-module && npm run build-types",
+    "build-esm": "npm run compile -- -d dist/esm --env-name esm --out-file-extension .mjs",
+    "build-main": "npm run compile -- -d dist/main --env-name main",
+    "build-module": "npm run compile -- -d dist/module --env-name module",
+    "build-types": "tsc -p tsconfig.json -d --outDir types --emitDeclarationOnly",
+    "check-types": "tsc --noEmit -p tsconfig.json",
+    "compile": "babel src -x .ts --ignore \"**/*.test.ts\" --delete-dir-on-start",
+    "format": "prettier --write \"**/*.{ts,js,md,yml,json,eslintrc,prettierrc}\"",
+    "lint": "eslint . --ext .ts",
+    "prepublishOnly": "npm run lint && npm run test && npm run build && npm run format",
+    "test": "jest",
+    "validate": "npm run check-types && npm run lint && npm run test -- --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build-types && git add types && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,js}": [
+      "eslint",
+      "prettier --write"
+    ],
+    "**/*.{md,yml,json}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@lunde/create-pkg": "file:/Users/admiral/.npm/_npx/72883/lib/node_modules/@lunde/create-pkg/",
+    "@lunde/babel-preset-es": "latest",
+    "jest": "latest",
+    "babel-plugin-annotate-pure-calls": "latest",
+    "eslint": "latest",
+    "eslint-import-resolver-jest": "latest",
+    "eslint-plugin-jest": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "prettier": "latest",
+    "@types/jest": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "ts-jest": "latest",
+    "typescript": "latest"
+  },
+  "dependencies": {},
+  "peerDependencies": {}
+}
