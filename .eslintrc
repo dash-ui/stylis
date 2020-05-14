@@ -1,23 +1,13 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "jest"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:jest/recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "plugins": ["jest"],
+  "extends": ["eslint:recommended", "plugin:jest/recommended"],
   "rules": {
     "no-console": "off",
     "no-prototype-builtins": "off",
     "no-constant-condition": "off",
     "no-undef": "off",
-    "@typescript-eslint/member-delimiter-style": "off",
-    "@typescript-eslint/interface-name-prefix": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/ban-ts-ignore": "off",
-    "@typescript-eslint/camelcase": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-use-before-define": "off"
+    "no-fallthrough": "off",
+    "no-extra-semi": "off"
   },
   "env": {
     "browser": true,
@@ -25,12 +15,16 @@
     "es6": true,
     "jest/globals": true
   },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
   "globals": {
     "__DEV__": true
   },
   "overrides": [
     {
-      "files": ["**/test.ts", "**/*.test.ts"],
+      "files": ["**/*.test.js"],
       "settings": {
         "import/resolver": {
           "jest": {

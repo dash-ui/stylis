@@ -3,3 +3,5 @@ node_modules
 /dist
 /test
 *.config.js
+stylis.min.js
+types

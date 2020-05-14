@@ -11,7 +11,7 @@
   ],
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
-  "source": "src/index.ts",
+  "source": "src/stylis.min.js",
   "types": "types/index.d.ts",
   "files": [
     "/dist",
@@ -32,22 +32,21 @@
   },
   "sideEffects": false,
   "scripts": {
-    "build": "npm run build-esm && npm run build-main && npm run build-module && npm run build-types",
-    "build-esm": "npm run compile -- -d dist/esm --env-name esm --out-file-extension .mjs",
-    "build-main": "npm run compile -- -d dist/main --env-name main",
-    "build-module": "npm run compile -- -d dist/module --env-name module",
-    "build-types": "tsc -p tsconfig.json -d --outDir types --emitDeclarationOnly",
-    "check-types": "tsc --noEmit -p tsconfig.json",
-    "compile": "babel src -x .ts --ignore \"**/*.test.ts\" --delete-dir-on-start",
+    "build": "node scripts/build && npm run build-esm && npm run build-main && npm run build-module && npm run build-types && npm run format",
+    "build-esm": "npm run compile -- -o dist/esm/index.mjs --env-name esm",
+    "build-main": "npm run compile -- -o dist/main/index.js --env-name main",
+    "build-module": "npm run compile -- -o dist/module/index.js --env-name module",
+    "build-types": "cp -R node_modules/@emotion/stylis/types/* types",
+    "compile": "babel src --ignore \"**/*.test.js\"",
     "format": "prettier --write \"**/*.{ts,js,md,yml,json,eslintrc,prettierrc}\"",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint .",
     "prepublishOnly": "npm run lint && npm run test && npm run build && npm run format",
     "test": "jest",
-    "validate": "npm run check-types && npm run lint && npm run test -- --coverage"
+    "validate": "npm run build && npm run lint && npm run test -- --coverage"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build-types && git add types && lint-staged"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
@@ -60,20 +59,25 @@
     ]
   },
   "devDependencies": {
-    "@lunde/babel-preset-es": "latest",
-    "@types/jest": "latest",
-    "@typescript-eslint/eslint-plugin": "latest",
-    "@typescript-eslint/parser": "latest",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@emotion/stylis": "^0.8.5",
+    "babel-jest": "^26.0.1",
     "babel-plugin-annotate-pure-calls": "latest",
+    "dtslint": "^0.3.0",
     "eslint": "latest",
     "eslint-import-resolver-jest": "latest",
     "eslint-plugin-jest": "latest",
     "husky": "latest",
     "jest": "latest",
+    "jscodeshift": "^0.5.0",
     "lint-staged": "latest",
     "prettier": "latest",
-    "ts-jest": "latest",
-    "typescript": "latest"
+    "request": "^2.85.0",
+    "request-promise-native": "^1.0.8",
+    "stylis": "^3.5.4",
+    "stylis-rule-sheet": "^0.0.10"
   },
   "dependencies": {},
   "peerDependencies": {}
