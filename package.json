@@ -60,19 +60,18 @@
     ]
   },
   "devDependencies": {
-    "@lunde/create-pkg": "file:/Users/admiral/.npm/_npx/72883/lib/node_modules/@lunde/create-pkg/",
     "@lunde/babel-preset-es": "latest",
-    "jest": "latest",
+    "@types/jest": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
     "babel-plugin-annotate-pure-calls": "latest",
     "eslint": "latest",
     "eslint-import-resolver-jest": "latest",
     "eslint-plugin-jest": "latest",
     "husky": "latest",
+    "jest": "latest",
     "lint-staged": "latest",
     "prettier": "latest",
-    "@types/jest": "latest",
-    "@typescript-eslint/eslint-plugin": "latest",
-    "@typescript-eslint/parser": "latest",
     "ts-jest": "latest",
     "typescript": "latest"
   },
