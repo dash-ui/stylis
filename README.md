@@ -59,5 +59,5 @@ To build this package from a newer version of stylis, update the version of styl
 
 # Thanks
 
-The [emotion](https://github.com/emotion-js) team did most of the work on this one, I just did some extra minifying ❤️
-Stylis was written by [Sultan Tarimo](https://github.com/thysultan). ❤️
+- The [emotion](https://github.com/emotion-js) team did most of the work on this one, I just did some extra minifying ❤️
+- Stylis was written by [Sultan Tarimo](https://github.com/thysultan). ❤️

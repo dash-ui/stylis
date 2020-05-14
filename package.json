@@ -1,6 +1,6 @@
 {
   "name": "@dash-ui/stylis",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/dash-ui/stylis#readme",
   "repository": "github:dash-ui/stylis",
   "bugs": "https://github.com/dash-ui/stylis/issues",
@@ -37,7 +37,7 @@
     "build-main": "npm run compile -- -o dist/main/index.js --env-name main",
     "build-module": "npm run compile -- -o dist/module/index.js --env-name module",
     "build-types": "cp -R node_modules/@emotion/stylis/types/* types",
-    "compile": "babel src --ignore \"**/*.test.js\"",
+    "compile": "babel src/stylis.min.js",
     "format": "prettier --write \"**/*.{ts,js,md,yml,json,eslintrc,prettierrc}\"",
     "lint": "eslint .",
     "prepublishOnly": "npm run lint && npm run test && npm run build && npm run format",
