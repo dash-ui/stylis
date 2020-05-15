@@ -131,6 +131,7 @@ async function doThing() {
       'replace($1, $2, $3)'
     )
     .replace(/([\w]+)\.indexOf\(([^)]+?)\)/g, 'indexOf($1, $2)')
+    .replace(/([\w]+)\.substring\(([^)]+?)\)/g, 'substring($1, $2)')
 
   await writeFile(
     './src/stylis.min.js',
@@ -162,5 +163,6 @@ const MS = '-ms-'
 function charCodeAt (s, code) { return s.charCodeAt(code) }
 function replace (s, i, o) { return s.replace(i, o) }
 function indexOf (s, a, b) { return s.indexOf(a, b) }
+function substring (s, a, b) { return s.substring(a, b) }
 `
 doThing()
