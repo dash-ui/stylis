@@ -1,6 +1,6 @@
 {
   "name": "@dash-ui/stylis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/dash-ui/stylis#readme",
   "repository": "github:dash-ui/stylis",
   "bugs": "https://github.com/dash-ui/stylis/issues",
@@ -40,7 +40,7 @@
     "lint": "eslint .",
     "prepublishOnly": "npm run lint && npm run test && npm run build && npm run format",
     "test": "jest",
-    "validate": "npm run lint && npm run test -- --coverage"
+    "validate": "npm run build-types && npm run lint && npm run test -- --coverage"
   },
   "husky": {
     "hooks": {
