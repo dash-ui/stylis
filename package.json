@@ -1,6 +1,6 @@
 {
   "name": "@dash-ui/stylis",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/dash-ui/stylis#readme",
   "repository": "github:dash-ui/stylis",
   "bugs": "https://github.com/dash-ui/stylis/issues",
@@ -34,7 +34,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "node scripts/build && lundle build",
-    "build-types": "cp -R node_modules/@emotion/stylis/types/* types",
+    "build-types": "cp -R node_modules/@emotion/stylis/types types",
     "dev": "lundle build -f module,cjs -w",
     "format": "prettier --write \"{,!(node_modules|dist|coverage)/**/}*.{ts,js,md,yml,json}\"",
     "lint": "eslint .",
@@ -109,6 +109,7 @@
     "bracketSpacing": false
   },
   "devDependencies": {
+    "@emotion/stylis": "^0.8.5",
     "babel-jest": "latest",
     "eslint": "latest",
     "eslint-config-lunde": "latest",
