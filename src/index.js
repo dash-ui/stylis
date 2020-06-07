@@ -1,19 +1,12 @@
+
 const WEBKIT = '-webkit-'
 const MOZ = '-moz-'
 const MS = '-ms-'
-function charCodeAt(s, code) {
-  return s.charCodeAt(code)
-}
-function replace(s, i, o) {
-  return s.replace(i, o)
-}
-function indexOf(s, a, b) {
-  return s.indexOf(a, b)
-}
-function substring(s, a, b) {
-  return s.substring(a, b)
-}
-export default function (Z) {
+function charCodeAt (s, code) { return s.charCodeAt(code) }
+function replace (s, i, o) { return s.replace(i, o) }
+function indexOf (s, a, b) { return s.indexOf(a, b) }
+function substring (s, a, b) { return s.substring(a, b) }
+export default  function (Z) {
   function L(d, c, e, h, a) {
     for (
       var m = 0,
@@ -152,7 +145,7 @@ export default function (Z) {
                       k = f + '{' + k + '}'
                       k =
                         1 === y || (2 === y && J('@' + k, 3))
-                          ? '@' + WEBKIT + k + '@' + k
+                          ? '@' + WEBKIT  +  k + '@' + k
                           : '@' + k
                       break
                     default:
@@ -419,8 +412,7 @@ export default function (Z) {
           switch (charCodeAt(a, 5)) {
             case 103:
               return (
-                WEBKIT +
-                'box-' +
+                 WEBKIT + 'box-' +
                 a.replace('-grow', '') +
                 WEBKIT +
                 a +
@@ -429,24 +421,30 @@ export default function (Z) {
                 a
               )
             case 115:
-              return WEBKIT + a + MS + replace(a, 'shrink', 'negative') + a
+              return (
+                WEBKIT + a + MS + replace(a, 'shrink', 'negative') + a
+              )
             case 98:
-              return WEBKIT + a + MS + replace(a, 'basis', 'preferred-size') + a
+              return (
+                WEBKIT +
+                a +
+                MS +
+                replace(a, 'basis', 'preferred-size') +
+                a
+              )
           }
         return WEBKIT + a + MS + a + a
       case 964:
-        return WEBKIT + a + MS + 'flex-' + a + a
+        return WEBKIT + a  +  MS + 'flex-' + a + a
       case 1023:
         if (99 !== charCodeAt(a, 8)) break
         b = substring(a, indexOf(a, ':', 15))
           .replace('flex-', '')
           .replace('space-between', 'justify')
-        return WEBKIT + 'box-pack' + b + WEBKIT + a + MS + 'flex-pack' + b + a
+        return WEBKIT + 'box-pack' + b + WEBKIT + a  +  MS + 'flex-pack' + b + a
       case 1005:
         return na.test(a)
-          ? replace(a, da, ':' + WEBKIT + '') +
-              replace(a, da, ':' + MOZ + '') +
-              a
+          ? replace(a, da, ':' + WEBKIT + '') + replace(a, da, ':' + MOZ + '') + a
           : a
       case 1e3:
         b = substring(a, 13).trim()
@@ -496,16 +494,15 @@ export default function (Z) {
             case 105:
               return (
                 (b = a.replace('-items', '')),
-                WEBKIT + a + WEBKIT + 'box-' + b + MS + 'flex-' + b + a
+                WEBKIT + a  +  WEBKIT + 'box-' + b  +  MS + 'flex-' + b + a
               )
             case 115:
-              return WEBKIT + a + MS + 'flex-item-' + replace(a, ea, '') + a
+              return WEBKIT + a  +  MS + 'flex-item-' + replace(a, ea, '') + a
             default:
               return (
                 WEBKIT +
                 a +
-                MS +
-                'flex-line-pack' +
+                 MS + 'flex-line-pack' +
                 a.replace('align-content', '').replace(ea, '') +
                 a
               )
@@ -528,7 +525,8 @@ export default function (Z) {
         break
       case 962:
         if (
-          ((a = WEBKIT + a + (102 === charCodeAt(a, 5) ? MS + a : '') + a),
+          ((a =
+            WEBKIT + a + (102 === charCodeAt(a, 5) ? MS + a : '') + a),
           211 === e + h &&
             105 === charCodeAt(a, 13) &&
             0 < indexOf(a, 'transform', 10))

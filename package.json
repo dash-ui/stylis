@@ -1,6 +1,6 @@
 {
   "name": "@dash-ui/stylis",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/dash-ui/stylis#readme",
   "repository": "github:dash-ui/stylis",
   "bugs": "https://github.com/dash-ui/stylis/issues",
@@ -10,10 +10,11 @@
   "keywords": [
     "stylis"
   ],
-  "main": "dist/main/stylis.min.js",
-  "module": "dist/module/stylis.min.js",
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
   "unpkg": "dist/umd/dash-stylis.js",
-  "source": "src/stylis.min.js",
+  "source": "src/index.js",
+  "types": "types/index.d.ts",
   "files": [
     "/dist",
     "/src",
@@ -21,19 +22,20 @@
   ],
   "exports": {
     ".": {
-      "browser": "./dist/module/stylis.min.js",
-      "import": "./dist/esm/stylis.min.mjs",
-      "require": "./dist/main/stylis.min.js",
+      "browser": "./dist/module/index.js",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/main/index.js",
       "umd": "./dist/umd/dash-stylis.js",
-      "source": "./src/stylis.min.js",
-      "default": "./dist/main/stylis.min.js"
+      "source": "./src/index.js",
+      "types": "types/index.d.ts",
+      "default": "./dist/main/index.js"
     },
     "./package.json": "./package.json",
     "./": "./"
   },
   "sideEffects": false,
   "scripts": {
-    "build": "node scripts/build && lundle build",
+    "build": "node scripts/build && lundle build -f cjs,esm,module,umd",
     "build-types": "cp -R node_modules/@emotion/stylis/types types",
     "dev": "lundle build -f module,cjs -w",
     "format": "prettier --write \"{,!(node_modules|dist|coverage)/**/}*.{ts,js,md,yml,json}\"",

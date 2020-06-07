@@ -135,7 +135,7 @@ async function doThing() {
     .replace(/([\w]+)\.substring\(([^)]+?)\)/g, 'substring($1, $2)')
 
   await writeFile(
-    './src/stylis.min.js',
+    './src/index.js',
     top +
       prettier
         .format(finalSrc, {
