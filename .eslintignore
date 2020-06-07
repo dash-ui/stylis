@@ -1,7 +1,0 @@
-node_modules
-/coverage
-/dist
-/test
-*.config.js
-stylis.min.js
-types

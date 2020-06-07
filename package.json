@@ -1,18 +1,19 @@
 {
   "name": "@dash-ui/stylis",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "homepage": "https://github.com/dash-ui/stylis#readme",
   "repository": "github:dash-ui/stylis",
   "bugs": "https://github.com/dash-ui/stylis/issues",
+  "author": "Jared Lunde <jared.lunde@gmail.com> (https://jaredLunde.com)",
   "license": "MIT",
   "description": "A fork of @emotion/stylis that makes it even smaller, still",
   "keywords": [
     "stylis"
   ],
-  "main": "dist/main/index.js",
-  "module": "dist/module/index.js",
+  "main": "dist/main/stylis.min.js",
+  "module": "dist/module/stylis.min.js",
+  "unpkg": "dist/umd/dash-stylis.js",
   "source": "src/stylis.min.js",
-  "types": "types/index.d.ts",
   "files": [
     "/dist",
     "/src",
@@ -20,29 +21,26 @@
   ],
   "exports": {
     ".": {
-      "browser": "./dist/module/index.js",
-      "import": "./dist/esm/index.mjs",
-      "require": "./dist/main/index.js",
-      "source": "./src/index.ts",
-      "types": "./types/index.d.ts",
-      "default": "./dist/main/index.js"
+      "browser": "./dist/module/stylis.min.js",
+      "import": "./dist/esm/stylis.min.mjs",
+      "require": "./dist/main/stylis.min.js",
+      "umd": "./dist/umd/dash-stylis.js",
+      "source": "./src/stylis.min.js",
+      "default": "./dist/main/stylis.min.js"
     },
     "./package.json": "./package.json",
     "./": "./"
   },
   "sideEffects": false,
   "scripts": {
-    "build": "node scripts/build && npm run build-esm && npm run build-main && npm run build-module && npm run build-types && npm run format",
-    "build-esm": "npm run compile -- -o dist/esm/index.mjs --env-name esm",
-    "build-main": "npm run compile -- -o dist/main/index.js --env-name main",
-    "build-module": "npm run compile -- -o dist/module/index.js --env-name module",
+    "build": "node scripts/build && lundle build",
     "build-types": "cp -R node_modules/@emotion/stylis/types/* types",
-    "compile": "babel src/stylis.min.js",
-    "format": "prettier --write \"**/*.{ts,js,md,yml,json,eslintrc,prettierrc}\"",
+    "dev": "lundle build -f module,cjs -w",
+    "format": "prettier --write \"{,!(node_modules|dist|coverage)/**/}*.{ts,js,md,yml,json}\"",
     "lint": "eslint .",
     "prepublishOnly": "npm run lint && npm run test && npm run build && npm run format",
     "test": "jest",
-    "validate": "npm run build && npm run lint && npm run test -- --coverage"
+    "validate": "npm run lint && npm run test -- --coverage"
   },
   "husky": {
     "hooks": {
@@ -50,31 +48,77 @@
     }
   },
   "lint-staged": {
-    "**/*.{ts,js}": [
+    "**/*.js": [
       "eslint",
       "prettier --write"
     ],
-    "**/*.{md,yml,json}": [
+    "**/*.{md,yml,json,eslintrc,prettierrc}": [
       "prettier --write"
     ]
   },
+  "eslintConfig": {
+    "extends": [
+      "lunde"
+    ],
+    "rules": {
+      "no-fallthrough": "off",
+      "no-useless-escape": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.test.js"
+        ],
+        "settings": {
+          "import/resolver": {
+            "jest": {
+              "jestConfigFile": "./package.json"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "coverage",
+    "dist",
+    "test",
+    "*.config.js"
+  ],
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "src",
+      "test"
+    ],
+    "collectCoverageFrom": [
+      "**/src/**/*.js"
+    ],
+    "setupFilesAfterEnv": [
+      "./test/setup.js"
+    ],
+    "snapshotResolver": "./test/resolve-snapshot.js",
+    "globals": {
+      "__DEV__": true
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "bracketSpacing": false
+  },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
-    "@emotion/stylis": "^0.8.5",
-    "babel-jest": "^26.0.1",
-    "babel-plugin-annotate-pure-calls": "latest",
-    "dtslint": "^0.3.0",
+    "babel-jest": "latest",
     "eslint": "latest",
-    "eslint-import-resolver-jest": "latest",
-    "eslint-plugin-jest": "latest",
+    "eslint-config-lunde": "latest",
     "husky": "latest",
     "jest": "latest",
-    "jscodeshift": "^0.5.0",
+    "jscodeshift": "^0.10.0",
     "lint-staged": "latest",
+    "lundle": "latest",
     "prettier": "latest",
-    "request": "^2.85.0",
+    "request": "^2.88.2",
     "request-promise-native": "^1.0.8",
     "stylis": "^3.5.4",
     "stylis-rule-sheet": "^0.0.10"

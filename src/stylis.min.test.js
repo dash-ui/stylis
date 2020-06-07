@@ -1,5 +1,6 @@
-import Stylis from './stylis.min.js'
 import stylisRuleSheet from 'stylis-rule-sheet'
+// eslint-disable-next-line import/extensions
+import Stylis from './stylis.min.js'
 
 const specs = [
   {

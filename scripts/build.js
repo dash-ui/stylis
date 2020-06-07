@@ -2,10 +2,11 @@
 // https://github.com/emotion-js/emotion/blob/master/packages/stylis/build.js
 const stylisPath = require.resolve('stylis')
 const {promisify} = require('util')
+const fs = require('fs')
 const j = require('jscodeshift')
 const request = require('request-promise-native')
-const fs = require('fs')
 const prettier = require('prettier')
+// eslint-disable-next-line import/no-extraneous-dependencies
 const recast = require('recast')
 
 const readFile = promisify(fs.readFile)
