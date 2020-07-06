@@ -134,7 +134,7 @@
     "jest": "latest",
     "jscodeshift": "^0.10.0",
     "lint-staged": "latest",
-    "lundle": "latest",
+    "lundle": "^0.4.9",
     "prettier": "latest",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.8",
