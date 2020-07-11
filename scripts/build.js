@@ -131,6 +131,7 @@ async function doThing() {
       /([\w]+)\.replace\(([\w\s'"+]+),([\w\s'"$:\-+]+)\)/g,
       'replace($1, $2, $3)'
     )
+    .replace(/([\w]+)\.replace\(([\w\s'"+]+), ''\)/g, 'replace($1, $2, $3)')
     .replace(/([\w]+)\.indexOf\(([^)]+?)\)/g, 'indexOf($1, $2)')
     .replace(/([\w]+)\.substring\(([^)]+?)\)/g, 'substring($1, $2)')
 
@@ -146,12 +147,19 @@ async function doThing() {
         .replace(/'-webkit-'/g, 'WEBKIT')
         .replace(/'-ms-'/g, 'MS')
         .replace(/'-moz-'/g, 'MOZ')
+        .replace(/'flex-'/g, 'FLEX')
         .replace(/'([^']*?)-webkit-([^']*?)'/g, `'$1' + WEBKIT + '$2'`)
         .replace(/'([^']*?)-moz-([^']*?)'/g, `'$1' + MOZ + '$2'`)
         .replace(/'([^']*?)-ms-([^']*?)'/g, `'$1' + MS + '$2'`)
+        .replace(/'([^']*?)flex-([^']*?)'/g, `'$1' + FLEX + '$2'`)
+        .replace(/'\$1'/g, '$$1')
+        .replace(/'\$2'/g, '$$2')
+        .replace(/'\$1 \$2'/g, `$$1 + ' ' + $$2`)
         .replace(/^([\s]+)'' \+/gm, '$1')
         .replace(/return '' \+/gm, 'return')
         .replace(/\+ '' \+/g, ' + ')
+        .replace(/'' \+/g, '')
+        .replace(/\+ ''/g, '')
   )
 
   console.log('done')
@@ -161,6 +169,9 @@ const top = `
 const WEBKIT = '-webkit-'
 const MOZ = '-moz-'
 const MS = '-ms-'
+const FLEX = 'flex-'
+const $1 = '$1'
+const $2 = '$2'
 function charCodeAt (s, code) { return s.charCodeAt(code) }
 function replace (s, i, o) { return s.replace(i, o) }
 function indexOf (s, a, b) { return s.indexOf(a, b) }

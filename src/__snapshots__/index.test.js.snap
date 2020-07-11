@@ -334,7 +334,7 @@ Array [
 
 exports[`vendor prefixing V 1`] = `
 Array [
-  ".css-26{display :-webkit-box!important;display :-webkit-flex!important;display :-ms-flexbox!important;display :flex!important;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-self:flex-start;-ms-flex-item-align:start;align-self:flex-start;-webkit-align-self:flex-end;-ms-flex-item-align:end;align-self:flex-end;}",
+  ".css-26{display :-webkit-box!important;display :-webkit-flex!important;display :-ms-flexbox!important;display :flex!important;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-self:flex-start;-ms-flex-item-align:flex-start;align-self:flex-start;-webkit-align-self:flex-end;-ms-flex-item-align:flex-end;align-self:flex-end;}",
 ]
 `;
 

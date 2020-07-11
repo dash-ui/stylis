@@ -1,6 +1,9 @@
 const WEBKIT = '-webkit-'
 const MOZ = '-moz-'
 const MS = '-ms-'
+const FLEX = 'flex-'
+const $1 = '$1'
+const $2 = '$2'
 function charCodeAt(s, code) {
   return s.charCodeAt(code)
 }
@@ -148,7 +151,7 @@ export default function (Z) {
                       k = f + '{' + k + '}'
                       break
                     case 107:
-                      f = replace(f, ja, '$1 $2')
+                      f = replace(f, ja, $1 + ' ' + $2)
                       k = f + '{' + k + '}'
                       k =
                         1 === y || (2 === y && J('@' + k, 3))
@@ -335,12 +338,12 @@ export default function (Z) {
         2 !== y || J(p, 2) || (D = 0)
         switch (D) {
           case 111:
-            p = replace(p, ka, ':' + MOZ + '$1') + p
+            p = replace(p, ka, ':' + MOZ + $1) + p
             break
           case 112:
             p =
               replace(p, R, '::' + WEBKIT + 'input-$1') +
-              replace(p, R, '::' + MOZ + '$1') +
+              replace(p, R, '::' + MOZ + $1) +
               replace(p, R, ':' + MS + 'input-$1') +
               p
         }
@@ -373,12 +376,12 @@ export default function (Z) {
     33 > h && (h = (c = c.trim()).charCodeAt(0))
     switch (h) {
       case 38:
-        return c.replace(S, '$1' + d.trim())
+        return c.replace(S, $1 + d.trim())
       case 58:
-        return d.trim() + c.replace(S, '$1' + d.trim())
+        return d.trim() + c.replace(S, $1 + d.trim())
       default:
         if (0 < 1 * e && 0 < indexOf(c, '\f'))
-          return c.replace(S, (58 === charCodeAt(d, 0) ? '' : '$1') + d.trim())
+          return c.replace(S, (58 === charCodeAt(d, 0) ? '' : $1) + d.trim())
     }
     return d + c
   }
@@ -412,7 +415,7 @@ export default function (Z) {
       case 883:
         if (45 === charCodeAt(a, 8)) return WEBKIT + a + a
         if (0 < indexOf(a, 'image-set(', 11))
-          return replace(a, ma, '$1' + WEBKIT + '$2') + a
+          return replace(a, ma, $1 + WEBKIT + $2) + a
         break
       case 932:
         if (45 === charCodeAt(a, 4))
@@ -435,18 +438,16 @@ export default function (Z) {
           }
         return WEBKIT + a + MS + a + a
       case 964:
-        return WEBKIT + a + MS + 'flex-' + a + a
+        return WEBKIT + a + MS + FLEX + a + a
       case 1023:
         if (99 !== charCodeAt(a, 8)) break
         b = substring(a, indexOf(a, ':', 15))
-          .replace('flex-', '')
+          .replace(FLEX, '')
           .replace('space-between', 'justify')
-        return WEBKIT + 'box-pack' + b + WEBKIT + a + MS + 'flex-pack' + b + a
+        return WEBKIT + 'box-pack' + b + WEBKIT + a + MS + FLEX + 'pack' + b + a
       case 1005:
         return na.test(a)
-          ? replace(a, da, ':' + WEBKIT + '') +
-              replace(a, da, ':' + MOZ + '') +
-              a
+          ? replace(a, da, ':' + WEBKIT) + replace(a, da, ':' + MOZ) + a
           : a
       case 1e3:
         b = substring(a, 13).trim()
@@ -496,16 +497,17 @@ export default function (Z) {
             case 105:
               return (
                 (b = a.replace('-items', '')),
-                WEBKIT + a + WEBKIT + 'box-' + b + MS + 'flex-' + b + a
+                WEBKIT + a + WEBKIT + 'box-' + b + MS + FLEX + b + a
               )
             case 115:
-              return WEBKIT + a + MS + 'flex-item-' + replace(a, ea, '') + a
+              return WEBKIT + a + MS + FLEX + 'item-' + replace(a, ea, '') + a
             default:
               return (
                 WEBKIT +
                 a +
                 MS +
-                'flex-line-pack' +
+                FLEX +
+                'line-pack' +
                 a.replace('align-content', '').replace(ea, '') +
                 a
               )
@@ -536,7 +538,7 @@ export default function (Z) {
           return (
             substring(a, 0, indexOf(a, ';', 27) + 1).replace(
               pa,
-              '$1' + WEBKIT + '$2'
+              $1 + WEBKIT + $2
             ) + a
           )
     }
@@ -546,7 +548,7 @@ export default function (Z) {
     var e = indexOf(d, 1 === c ? ':' : '{'),
       h = substring(d, 0, 3 !== c ? e : 10)
     e = substring(d, e + 1, d.length - 1)
-    return U(2 !== c ? h : replace(h, qa, '$1'), e, c)
+    return U(2 !== c ? h : replace(h, qa, $1), e, c)
   }
   function ia(d, c) {
     var e = Q(c, charCodeAt(c, 0), charCodeAt(c, 1), charCodeAt(c, 2))
@@ -618,7 +620,7 @@ export default function (Z) {
     T = /[svh]\w+-[tblr]{2}/,
     ha = /\(\s*(.*)\s*\)/g,
     ra = /([\s\S]*?);/g,
-    ea = /-self|flex-/g,
+    ea = /-self|' + FLEX + '/g,
     qa = /[^]*?(:[rp][el]a[\w-]+)[^]*/,
     oa = /stretch|:\s*\w+\-(?:conte|avail)/,
     ma = /([^-])(image-set\()/,
