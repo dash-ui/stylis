@@ -128,10 +128,10 @@ async function doThing() {
   let finalSrc = data
     .replace(/([\w]+)\.charCodeAt\((.+?)\)/g, 'charCodeAt($1, $2)')
     .replace(
-      /([\w]+)\.replace\(([\w\s'"+]+),([\w\s'"$:\-+]+)\)/g,
+      /([\w]+)\.replace\(([\w\s'"+-]+),([\w\s'"$:\-+-]+)\)/g,
       'replace($1, $2, $3)'
     )
-    .replace(/([\w]+)\.replace\(([\w\s'"+]+), ''\)/g, 'replace($1, $2, $3)')
+    .replace(/([\w]+)\.replace\(([\w\s'"+-]+), ''\)/g, 'replace($1, $2, $3)')
     .replace(/([\w]+)\.indexOf\(([^)]+?)\)/g, 'indexOf($1, $2)')
     .replace(/([\w]+)\.substring\(([^)]+?)\)/g, 'substring($1, $2)')
 

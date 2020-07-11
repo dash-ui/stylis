@@ -424,7 +424,7 @@ export default function (Z) {
               return (
                 WEBKIT +
                 'box-' +
-                a.replace('-grow', '') +
+                replace(a, '-grow', '') +
                 WEBKIT +
                 a +
                 MS +
@@ -496,7 +496,7 @@ export default function (Z) {
           switch (charCodeAt(a, 6)) {
             case 105:
               return (
-                (b = a.replace('-items', '')),
+                (b = replace(a, '-items', '')),
                 WEBKIT + a + WEBKIT + 'box-' + b + MS + FLEX + b + a
               )
             case 115:
@@ -508,7 +508,7 @@ export default function (Z) {
                 MS +
                 FLEX +
                 'line-pack' +
-                a.replace('align-content', '').replace(ea, '') +
+                replace(a, 'align-content', '').replace(ea, '') +
                 a
               )
           }
@@ -525,7 +525,7 @@ export default function (Z) {
                 ':stretch'
               )
             : replace(a, b, WEBKIT + b) +
-                a.replace(b, MOZ + b.replace('fill-', '')) +
+                a.replace(b, MOZ + replace(b, 'fill-', '')) +
                 a
         break
       case 962:
