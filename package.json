@@ -138,7 +138,7 @@
     "prettier": "latest",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.8",
-    "standard-version": "^8.0.0",
+    "standard-version": "^8.0.2",
     "stylis": "^3.5.4",
     "stylis-rule-sheet": "^0.0.10"
   },
