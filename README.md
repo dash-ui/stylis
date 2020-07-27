@@ -1,11 +1,12 @@
 <hr>
-<div align="center">
-  <h1 align="center">
-    @dash-ui/stylis
-  </h1>
-</div>
-
-<p align="center">
+  <br/>
+  <img src='https://github.com/dash-ui/styles/raw/master/assets/logo.png'/>
+  <blockquote>
+    A tinier build of <a href="https://github.com/thysultan/stylis.js">Stylis</a>
+  </blockquote>
+  <pre>npm i @dash-ui/stylis</pre>
+  <br/>
+  
   <a href="https://bundlephobia.com/result?p=@dash-ui/stylis">
     <img alt="Bundlephobia" src="https://img.shields.io/bundlephobia/minzip/@dash-ui/stylis?style=for-the-badge&labelColor=24292e">
   </a>
@@ -24,12 +25,7 @@
   <a aria-label="License" href="https://jaredlunde.mit-license.org/">
     <img alt="MIT License" src="https://img.shields.io/npm/l/@dash-ui/stylis?style=for-the-badge&labelColor=24292e">
   </a>
-</p>
-
-<pre align="center">npm i @dash-ui/stylis</pre>
 <hr>
-
-> A custom build of Stylis
 
 `@dash-ui/stylis` is a version of [Stylis](https://github.com/thysultan/stylis.js) that has been modified slightly to make it smaller. The only Stylis option that can be changed is `prefix`, the rest of the options are already set to the values shown below and cannot be changed. This package also only exports the constructer, so you have to do `new Stylis()` and use the result from that rather than directly calling `Stylis`. The result of that function also cannot be used to create a stylis instance unlike stylis.
 
